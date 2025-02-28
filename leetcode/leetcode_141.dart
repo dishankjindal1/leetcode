@@ -1,13 +1,6 @@
 // ignore_for_file: unused_import
 
-import 'dart:collection';
-import 'dart:math';
-
-class ListNode {
-  int val;
-  ListNode? next;
-  ListNode([this.val = 0, this.next]);
-}
+import '../core/core.dart';
 
 class Solution {
   bool hasCycle(ListNode? root) {
