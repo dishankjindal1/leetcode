@@ -1,37 +1,34 @@
 // ignore_for_file: unused_local_variable
 
 class Solution {
-  int removeDuplicates(List<int> nums) {
-    var j = 1, k = 1;
+  void rotate(List<int> nums, int k) {
+    int n = nums.length;
+    k %= nums.length;
 
-    for (var i = 1; i < nums.length; i++) {
-      if (nums[i - 1] == nums[i]) {
-        k++;
-      } else {
-        k = 1;
-      }
+    reverse(nums, 0, n);
+    reverse(nums, 0, k);
+    reverse(nums, k, n);
+  }
 
-      if (k <= 2) {
-        nums[j] = nums[i];
-        j++;
-      }
+  void reverse(List<int> nums, int l, int r) {
+    for (var i = l; i < (l + r) / 2; i++) {
+      var temp = nums[i];
+      nums[i] = nums[r - (i - l) - 1];
+      nums[r - (i - l) - 1] = temp;
     }
-
-    return j;
   }
 }
 
 void main() {
   final solution = Solution();
 
-  final testcase1 = (5, [1, 1, 1, 2, 2, 3]);
-  final testcase2 = (7, [0, 0, 1, 1, 1, 1, 2, 3, 3]);
+  final testcase1 = ([5, 6, 7, 1, 2, 3, 4], [1, 2, 3, 4, 5, 6, 7], 3);
 
-  final testcase = testcase2;
+  final testcase = testcase1;
 
-  final result = solution.removeDuplicates(testcase.$2);
+  solution.rotate(testcase.$2, testcase.$3);
 
-  print("-> $result <- result");
+  print("-> ${testcase.$2} <- result");
   print("-> ${testcase.$1} <- expected");
 }
 

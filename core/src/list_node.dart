@@ -9,10 +9,10 @@ class ListNode {
     ListNode root = ListNode(list.first);
     ListNode head = root;
 
-    for (final val in list.sublist(1)) {
-      // root.next = ListNode(val);
-      // root = root.next!;
-    }
+    // for (final val in list.sublist(1)) {
+    // root.next = ListNode(val);
+    // root = root.next!;
+    // }
 
     return head;
   }

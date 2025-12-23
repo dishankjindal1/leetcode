@@ -1,35 +1,34 @@
 // ignore_for_file: unused_local_variable
 
 class Solution {
-  int removeDuplicates(List<int> nums) {
-    var j = 1, k = 1;
+  int maxProfit(List<int> prices) {
+    int minPrice = prices[0];
+    int maxPrice = 0;
 
-    for (var i = 1; i < nums.length; i++) {
-      if (nums[i - 1] == nums[i]) {
-        k++;
-      } else {
-        k = 1;
+    for (var i = 1; i < prices.length; i++) {
+      var profit = prices[i] - minPrice;
+
+      if (profit > maxPrice) {
+        maxPrice = profit;
       }
 
-      if (k <= 2) {
-        nums[j] = nums[i];
-        j++;
+      if (prices[i] < minPrice) {
+        minPrice = prices[i];
       }
     }
 
-    return j;
+    return maxPrice;
   }
 }
 
 void main() {
   final solution = Solution();
 
-  final testcase1 = (5, [1, 1, 1, 2, 2, 3]);
-  final testcase2 = (7, [0, 0, 1, 1, 1, 1, 2, 3, 3]);
+  final testcase1 = (5, [7, 1, 5, 3, 6, 4]);
 
-  final testcase = testcase2;
+  final testcase = testcase1;
 
-  final result = solution.removeDuplicates(testcase.$2);
+  final result = solution.maxProfit(testcase.$2);
 
   print("-> $result <- result");
   print("-> ${testcase.$1} <- expected");
